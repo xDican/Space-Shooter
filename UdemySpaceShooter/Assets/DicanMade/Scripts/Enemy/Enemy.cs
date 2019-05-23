@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] float minTimeBetweenShots;
     [SerializeField] float maxTimeBetweenShots;
     [SerializeField] float projectileSpeed = 10f;
+    [SerializeField] int scoreValue = 150;
 
     [Header("Prefabs")]
     [SerializeField] GameObject explosionPrefab;
@@ -68,6 +69,7 @@ public class Enemy : MonoBehaviour
 
     private void Die()
     {
+        FindObjectOfType<GameManager>().AddToScore(scoreValue);
         GameObject explosion =  Instantiate(explosionPrefab, transform.transform.position, Quaternion.identity) as GameObject;
         AudioSource.PlayClipAtPoint(deathSound, Camera.main.transform.position, deathSoundVolume);
         Destroy(explosion, 0.4f);

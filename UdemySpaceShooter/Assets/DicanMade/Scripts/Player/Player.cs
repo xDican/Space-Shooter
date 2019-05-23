@@ -128,11 +128,14 @@ public class Player : MonoBehaviour
     void ProcessHit(DamageDealer _damagedealer)
     {
         health -= _damagedealer.GetDamage();
-        Debug.Log("Player Health = " + health);
         if (health <= 0)
         {
             Die();
         }
+    }
+    public float GetPlayerHealth()
+    {
+        return health;
     }
 
     private void Die()
